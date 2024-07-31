@@ -53,4 +53,13 @@
     <string name="edit_product">Ubah Status Produk</string>
     <string name="my_waste_product">Limbah Saya di Pasar</string>
     <string name="product_detail">Detail Produk</string>
+    <string name="recyco_coins_overview">Sekilas tentang Recyco Coins</string>
+    <string name="recyco_coins_overview_description">Recyco Coins merupakan skema reward yang dapat ditukar dengan berbagai hadiah menarik, seperti merchandise dan diskon biaya layanan Recyco. Untuk mendapatkan Recyco Coins, Anda dapat melakukan kontribusi terhadap forum Recyco secara positif. Recyco Coins tidak dapat diuangkan dan ditransfer ke pengguna lain.</string>
+    <string name="reward_1_total">500 koin</string>
+    <string name="reward_1_title">Celengan dari Botol Plastik Bekas</string>
+    <string name="reward_2_title">Keranjang dari Sedotan Plastik Bekas</string>
+    <string name="reward_2_total">1000 koin</string>
+    <string name="reward_3_title">Dompet dari Bungkus Kemasan Snack</string>
+    <string name="reward_3_total">2500 koin</string>
+    <string name="article_detail">Detail Artikel</string>
 </resources>
