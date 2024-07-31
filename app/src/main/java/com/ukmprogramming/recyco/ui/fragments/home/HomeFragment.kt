@@ -1,5 +1,6 @@
 package com.ukmprogramming.recyco.ui.fragments.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.databinding.FragmentHomeBinding
+import com.ukmprogramming.recyco.ui.activities.articlelist.ArticleListActivity
+import com.ukmprogramming.recyco.ui.activities.community.CommunityViewModel
+import com.ukmprogramming.recyco.ui.activities.registercommunity.RegisterCommunityActivity
+import com.ukmprogramming.recyco.ui.activities.reward.RewardActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,11 +36,11 @@ class HomeFragment : Fragment() {
 
         binding.apply {
             cvCoins.setOnClickListener {
-                // TODO: to progress reward activity
+                startActivity(Intent(activity, RewardActivity::class.java))
             }
 
             cvRegisterCommunity.setOnClickListener {
-                // TODO: to register community activity
+                startActivity(Intent(activity, RegisterCommunityActivity::class.java))
             }
 
             btnLocation.setOnClickListener {
@@ -43,11 +48,11 @@ class HomeFragment : Fragment() {
             }
 
             btnArticle.setOnClickListener {
-                // TODO: to article activity
+                startActivity(Intent(activity, ArticleListActivity::class.java))
             }
 
             btnCommunity.setOnClickListener {
-                // TODO: to community activity
+                startActivity(Intent(activity, CommunityViewModel::class.java))
             }
         }
     }
