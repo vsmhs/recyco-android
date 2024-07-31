@@ -57,18 +57,26 @@ class AddProductActivity : AppCompatActivity() {
                 val price = etPrice.text.toString().toDoubleOrNull()
                 val weight = etWeight.text.toString().toDoubleOrNull()
 
-                if (price != null && weight != null) {
-                    viewModel.createMarketItem(
-                        name,
-                        price,
-                        weight,
-                        description,
-                        imageFile
-                    )
-                } else {
+                imageFile?.let {
+                    if (price != null && weight != null) {
+                        viewModel.createMarketItem(
+                            name,
+                            price,
+                            weight,
+                            it,
+                            description,
+                        )
+                    } else {
+                        Toast.makeText(
+                            this@AddProductActivity,
+                            "Please fill price, weight, and image",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                } ?: run {
                     Toast.makeText(
                         this@AddProductActivity,
-                        "Please fill all data",
+                        "Please fill price, weight, and image",
                         Toast.LENGTH_SHORT
                     ).show()
                 }

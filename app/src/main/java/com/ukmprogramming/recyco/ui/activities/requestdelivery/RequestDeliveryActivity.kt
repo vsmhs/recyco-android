@@ -16,7 +16,9 @@ import com.ukmprogramming.recyco.ui.activities.productdetail.ProductDetailActivi
 import com.ukmprogramming.recyco.ui.activities.productdetail.ProductDetailActivity.Companion
 import com.ukmprogramming.recyco.util.ResultState
 import com.ukmprogramming.recyco.util.handleHttpException
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RequestDeliveryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRequestDeliveryBinding
     private val viewModel by viewModels<RequestDeliveryViewModel>()

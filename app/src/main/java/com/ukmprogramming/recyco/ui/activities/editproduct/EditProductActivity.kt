@@ -15,7 +15,9 @@ import com.ukmprogramming.recyco.util.MarketTransactionStatuses
 import com.ukmprogramming.recyco.util.ResultState
 import com.ukmprogramming.recyco.util.UserRoles
 import com.ukmprogramming.recyco.util.handleHttpException
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class EditProductActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEditProductBinding
     private val viewModel by viewModels<EditProductViewModel>()
@@ -66,13 +68,9 @@ class EditProductActivity : AppCompatActivity() {
                 progressBar.isVisible = resultState is ResultState.Loading
 
                 if (resultState is ResultState.Success) {
-                    startActivity(
-                        Intent(
-                            this@EditProductActivity,
-                            MainActivity::class.java
-                        )
-                    )
-                    finish()
+                    resultState.data.getData()?.let {
+                        Toast.makeText(this@EditProductActivity, it, Toast.LENGTH_SHORT).show()
+                    }
                 } else if (resultState is ResultState.Error) {
                     resultState.exception.getData()?.handleHttpException(this@EditProductActivity)
                         ?.let { message ->
@@ -86,13 +84,9 @@ class EditProductActivity : AppCompatActivity() {
                 progressBar.isVisible = resultState is ResultState.Loading
 
                 if (resultState is ResultState.Success) {
-                    startActivity(
-                        Intent(
-                            this@EditProductActivity,
-                            MainActivity::class.java
-                        )
-                    )
-                    finish()
+                    resultState.data.getData()?.let {
+                        Toast.makeText(this@EditProductActivity, it, Toast.LENGTH_SHORT).show()
+                    }
                 } else if (resultState is ResultState.Error) {
                     resultState.exception.getData()?.handleHttpException(this@EditProductActivity)
                         ?.let { message ->

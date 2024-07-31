@@ -25,14 +25,14 @@ class AddProductViewModel @Inject constructor(
         name: String,
         price: Double,
         weight: Double,
+        thumbnail: File,
         description: String?,
-        thumbnail: File?
     ) = viewModelScope.launch {
         _createItemState.value = ResultState.Loading
 
         try {
             val response = marketRepository.createMarketItem(
-                name, price, weight, description, thumbnail?.let { Helpers.compressImage(it) }
+                name, price, weight, Helpers.compressImage(thumbnail), description,
             )
 
             if (response.success) {

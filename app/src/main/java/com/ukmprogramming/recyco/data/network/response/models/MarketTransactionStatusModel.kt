@@ -3,15 +3,16 @@ package com.ukmprogramming.recyco.data.network.response.models
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
+import java.util.Date
 
 @Parcelize
 data class MarketTransactionStatusModel(
-    @field:SerializedName("description")
+    @SerializedName("description")
     val description: String,
 
-    @field:SerializedName("created_at")
-    val createdAt: String,
+    @SerializedName("created_at")
+    val createdAt: Date,
 
-    @field:SerializedName("status")
+    @SerializedName("status")
     val status: String
 ) : Parcelable

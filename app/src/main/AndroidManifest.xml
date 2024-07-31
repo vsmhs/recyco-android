@@ -16,6 +16,12 @@
         android:theme="@style/Theme.Recyco"
         tools:targetApi="31">
         <activity
+            android:name=".Discussion"
+            android:exported="false" />
+        <activity
+            android:name=".list_articles"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.editproduct.EditProductActivity"
             android:exported="false" />
         <activity
@@ -44,16 +50,16 @@
             android:exported="false" />
         <activity
             android:name=".ui.activities.splash.SplashActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.activities.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- suppress AndroidDomInspection -->
+        </activity>
+        <activity
+            android:name=".ui.activities.main.MainActivity"
+            android:exported="true" /> <!-- suppress AndroidDomInspection -->
         <service
             android:name="com.google.android.gms.metadata.ModuleDependencies"
             android:enabled="false"

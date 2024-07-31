@@ -69,6 +69,8 @@ class EditProductViewModel @Inject constructor(
             _orderState.value = when (currentStatus) {
                 MarketTransactionStatuses.ON_PROCESS.name -> MarketTransactionStatuses.ON_PROCESS
                 MarketTransactionStatuses.ON_DELIVER.name -> MarketTransactionStatuses.ON_DELIVER
+                MarketTransactionStatuses.FINISHED.name -> MarketTransactionStatuses.FINISHED
+                MarketTransactionStatuses.CANCELLED.name -> MarketTransactionStatuses.CANCELLED
                 else -> {
                     throw Exception("Failed to get current status")
                 }
@@ -85,9 +87,9 @@ class EditProductViewModel @Inject constructor(
         try {
             val response = marketRepository.editMarketItem(
                 marketItem.id,
-                marketItem.name,
-                marketItem.price,
-                marketItem.weight,
+                null,
+                null,
+                null,
                 null,
                 null,
                 MarketTransactionStatuses.FINISHED.name
@@ -124,8 +126,8 @@ class EditProductViewModel @Inject constructor(
             val response = marketRepository.updateMarketTransaction(
                 itemId,
                 when (currentStatus) {
-                    MarketTransactionStatuses.ON_PROCESS.name -> MarketTransactionStatuses.ON_PROCESS
-                    MarketTransactionStatuses.ON_DELIVER.name -> MarketTransactionStatuses.ON_DELIVER
+                    MarketTransactionStatuses.ON_PROCESS.name -> MarketTransactionStatuses.ON_DELIVER
+                    MarketTransactionStatuses.ON_DELIVER.name -> MarketTransactionStatuses.FINISHED
                     else -> {
                         throw Exception("Failed to update current status")
                     }

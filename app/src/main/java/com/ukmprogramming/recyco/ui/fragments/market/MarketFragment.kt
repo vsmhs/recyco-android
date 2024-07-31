@@ -11,7 +11,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ukmprogramming.recyco.databinding.FragmentMarketBinding
+import com.ukmprogramming.recyco.ui.activities.addproduct.AddProductActivity
+import com.ukmprogramming.recyco.ui.activities.ownedproductlist.OwnedProductListActivity
 import com.ukmprogramming.recyco.ui.activities.productdetail.ProductDetailActivity
+import com.ukmprogramming.recyco.ui.activities.productorderhistorylist.ProductOrderHistoryListActivity
 import com.ukmprogramming.recyco.ui.adapters.MarketItemAdapter
 import com.ukmprogramming.recyco.util.ResultState
 import com.ukmprogramming.recyco.util.UserRoles
@@ -49,6 +52,24 @@ class MarketFragment : Fragment() {
             recyclerView.apply {
                 adapter = dataAdapter
                 layoutManager = GridLayoutManager(activity, 2)
+            }
+
+            fab.setOnClickListener {
+                startActivity(
+                    Intent(activity, AddProductActivity::class.java)
+                )
+            }
+
+            btnOwnedProduct.setOnClickListener {
+                startActivity(
+                    Intent(activity, OwnedProductListActivity::class.java)
+                )
+            }
+
+            btnHistory.setOnClickListener {
+                startActivity(
+                    Intent(activity, ProductOrderHistoryListActivity::class.java)
+                )
             }
 
             viewModel.loadingState.observe(viewLifecycleOwner) {

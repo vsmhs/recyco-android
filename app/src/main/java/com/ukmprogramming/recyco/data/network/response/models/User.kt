@@ -6,15 +6,15 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class User(
-    @field:SerializedName("role")
+    @SerializedName("role")
     val role: String,
 
-    @field:SerializedName("name")
+    @SerializedName("name")
     val name: String,
 
-    @field:SerializedName("phone_number")
+    @SerializedName("phone_number")
     val phoneNumber: String,
 
-    @field:SerializedName("id")
+    @SerializedName("id")
     val id: String
 ) : Parcelable

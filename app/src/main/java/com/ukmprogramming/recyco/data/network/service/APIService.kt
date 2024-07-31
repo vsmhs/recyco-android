@@ -29,7 +29,6 @@ interface APIService {
     ): LoginResponse
 
     @POST("/auth/logout")
-    @FormUrlEncoded
     suspend fun logout(
         @Header("Authorization") bearerToken: String,
     ): BaseResponse
@@ -60,8 +59,8 @@ interface APIService {
         @Part("name") name: RequestBody,
         @Part("price") price: RequestBody,
         @Part("weight") weight: RequestBody,
+        @Part thumbnail: MultipartBody.Part,
         @Part("description") description: RequestBody?,
-        @Part thumbnail: MultipartBody.Part?
     ): BaseResponse
 
     @GET("/markets/{id}")
@@ -75,9 +74,9 @@ interface APIService {
     suspend fun editMarketItem(
         @Header("Authorization") bearerToken: String,
         @Path("id") id: String,
-        @Part("name") name: RequestBody,
-        @Part("price") price: RequestBody,
-        @Part("weight") weight: RequestBody,
+        @Part("name") name: RequestBody?,
+        @Part("price") price: RequestBody?,
+        @Part("weight") weight: RequestBody?,
         @Part("description") description: RequestBody?,
         @Part thumbnail: MultipartBody.Part?,
         @Part("status") status: RequestBody?
@@ -94,6 +93,7 @@ interface APIService {
     ): MarketTransactionsResponse
 
     @POST("/market_transactions")
+    @FormUrlEncoded
     suspend fun createMarketTransaction(
         @Header("Authorization") bearerToken: String,
         @Field("item_id") itemId: String,
@@ -111,9 +111,10 @@ interface APIService {
     ): MarketTransactionResponse
 
     @PUT("/market_transactions/{id}")
+    @FormUrlEncoded
     suspend fun editMarketTransaction(
         @Header("Authorization") bearerToken: String,
-        @Path("item_id") itemId: String,
+        @Path("id") itemId: String,
         @Field("status") status: String,
     ): UpdateMarketTransactionResponse
 }

@@ -22,7 +22,27 @@ class ProfileViewModel @Inject constructor(
     val userDataState: LiveData<ResultState<User>>
         get() = _userDataState
 
-    suspend fun logout() = authRepository.logout()
+    private val _logoutState = MutableLiveData<ResultState<SingleEvent<String>>>()
+    val logoutState: LiveData<ResultState<SingleEvent<String>>>
+        get() = _logoutState
+
+    fun logout() = viewModelScope.launch {
+        _logoutState.value = ResultState.Loading
+
+        try {
+            val response = authRepository.logout()
+
+            if (response.success) {
+                authRepository.clearPreferences()
+                _logoutState.value = ResultState.Success(SingleEvent(response.message))
+            } else {
+                _logoutState.value = ResultState.Error(SingleEvent(Exception(response.message)))
+            }
+        } catch (e: Exception) {
+            _logoutState.value = ResultState.Error(SingleEvent(e))
+        }
+
+    }
 
     fun getUserProfile() = viewModelScope.launch {
         _userDataState.value = ResultState.Loading

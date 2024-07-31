@@ -6,12 +6,12 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class MarketTransactionItem(
-    @field:SerializedName("item")
+    @SerializedName("item")
     val item: MarketItem,
 
-    @field:SerializedName("id")
+    @SerializedName("id")
     val id: String,
 
-    @field:SerializedName("all_status")
+    @SerializedName("all_status")
     val allStatus: List<MarketTransactionStatusModel>
 ) : Parcelable

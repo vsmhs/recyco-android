@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.data.network.response.models.MarketTransactionsItem
 import com.ukmprogramming.recyco.databinding.ItemProductOrderHistoryBinding
+import com.ukmprogramming.recyco.util.Helpers
 import com.ukmprogramming.recyco.util.MarketTransactionStatuses
 
 class ProductOrderHistoryItemAdapter(
@@ -49,7 +50,11 @@ class ProductOrderHistoryItemAdapter(
                 .into(ivThumbnail)
             tvName.text = data.item.name
             tvWeight.text = context.getString(R.string.weight_template, data.item.weight.toString())
-            tvDate.text = data.item.postedAt
+            tvDate.text = if (data.item.postedAt != null) {
+                Helpers.formatDate(data.item.postedAt)
+            } else {
+                "-"
+            }
             tvStatus.text = when (data.lastStatus.status) {
                 MarketTransactionStatuses.ON_PROCESS.name -> "On Process"
                 MarketTransactionStatuses.ON_DELIVER.name -> "On Deliver"

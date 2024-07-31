@@ -34,10 +34,10 @@ class MarketViewModel @Inject constructor(
 
     init {
         _loadingState.addSource(_userDataState) {
-            _loadingState.value = loadingState.value == true || it is ResultState.Loading
+            _loadingState.value = it is ResultState.Loading
         }
         _loadingState.addSource(_marketDataState) {
-            _loadingState.value = loadingState.value == true || it is ResultState.Loading
+            _loadingState.value = it is ResultState.Loading
         }
     }
 

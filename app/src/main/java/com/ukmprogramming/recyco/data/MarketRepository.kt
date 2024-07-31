@@ -27,21 +27,19 @@ class MarketRepository @Inject constructor(
         name: String,
         price: Double,
         weight: Double,
+        thumbnail: File,
         description: String?,
-        thumbnail: File?
     ) = apiService.createMarketItem(
         appPreferences.getToken().first().formatBearerToken(),
         name.toRequestBody("text/plain".toMediaType()),
         price.toString().toRequestBody("text/plain".toMediaType()),
         weight.toString().toRequestBody("text/plain".toMediaType()),
+        MultipartBody.Part.createFormData(
+            "thumbnail",
+            thumbnail.name,
+            thumbnail.asRequestBody("image/jpg".toMediaType())
+        ),
         description?.toRequestBody("text/plain".toMediaType()),
-        thumbnail?.let {
-            MultipartBody.Part.createFormData(
-                "thumbnail",
-                it.name,
-                it.asRequestBody("image/jpg".toMediaType())
-            )
-        }
     )
 
     suspend fun getMarketItemById(itemId: String) = apiService.getMarketItemById(
@@ -51,18 +49,18 @@ class MarketRepository @Inject constructor(
 
     suspend fun editMarketItem(
         itemId: String,
-        name: String,
-        price: Double,
-        weight: Double,
+        name: String?,
+        price: Double?,
+        weight: Double?,
         description: String?,
         thumbnail: File?,
         status: String?
     ) = apiService.editMarketItem(
         appPreferences.getToken().first().formatBearerToken(),
         itemId,
-        name.toRequestBody("text/plain".toMediaType()),
-        price.toString().toRequestBody("text/plain".toMediaType()),
-        weight.toString().toRequestBody("text/plain".toMediaType()),
+        name?.toRequestBody("text/plain".toMediaType()),
+        price?.toString()?.toRequestBody("text/plain".toMediaType()),
+        weight?.toString()?.toRequestBody("text/plain".toMediaType()),
         description?.toRequestBody("text/plain".toMediaType()),
         thumbnail?.let {
             MultipartBody.Part.createFormData(

@@ -12,7 +12,9 @@ import com.ukmprogramming.recyco.util.Helpers
 import com.ukmprogramming.recyco.util.MarketTransactionStatuses
 import com.ukmprogramming.recyco.util.ResultState
 import com.ukmprogramming.recyco.util.handleHttpException
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DeliveryStatusActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDeliveryStatusBinding
     private val viewModel by viewModels<DeliveryStatusViewModel>()
@@ -23,21 +25,19 @@ class DeliveryStatusActivity : AppCompatActivity() {
         binding = ActivityDeliveryStatusBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val marketItem =
-            intent.getParcelableExtra<MarketTransactionsItem>(EXTRA_MARKET_TRANSACTIONS_ITEM_KEY)
-                ?: run {
-                    finish()
-                    return
-                }
+        val marketItemId = intent.getStringExtra(EXTRA_MARKET_ITEM_ID_KEY) ?: run {
+            finish()
+            return
+        }
 
         binding.apply {
             viewModel.marketTransactionDataState.observe(this@DeliveryStatusActivity) { resultState ->
                 progressBar.isVisible = resultState is ResultState.Loading
 
                 if (resultState is ResultState.Success) {
-                    tvProductName.text = marketItem.item.name
-                    tvProductWeight.text = marketItem.item.weight.toString()
-                    tvProductPrice.text = marketItem.item.price.toString()
+                    tvProductName.text = resultState.data.item.name
+                    tvProductWeight.text = resultState.data.item.weight.toString()
+                    tvProductPrice.text = resultState.data.item.price.toString()
 
                     val onProcessStatus = resultState.data.allStatus.firstOrNull {
                         it.status == MarketTransactionStatuses.ON_PROCESS.name
@@ -49,9 +49,12 @@ class DeliveryStatusActivity : AppCompatActivity() {
                         it.status == MarketTransactionStatuses.FINISHED.name
                     }
 
-                    tvOrderTime.text = Helpers.formatDate(onProcessStatus?.createdAt)
-                    tvDeliver.text = Helpers.formatDate(onDeliverStatus?.createdAt)
-                    tvComplete.text = Helpers.formatDate(finishedStatus?.createdAt)
+                    tvOrderTime.text =
+                        onProcessStatus?.createdAt?.let { Helpers.formatDate(it) } ?: "-"
+                    tvDeliver.text =
+                        onDeliverStatus?.createdAt?.let { Helpers.formatDate(it) } ?: "-"
+                    tvComplete.text =
+                        finishedStatus?.createdAt?.let { Helpers.formatDate(it) } ?: "-"
                 } else if (resultState is ResultState.Error) {
                     resultState.exception.getData()
                         ?.handleHttpException(this@DeliveryStatusActivity)
@@ -63,10 +66,10 @@ class DeliveryStatusActivity : AppCompatActivity() {
             }
         }
 
-        viewModel.getMarketTransactionById(marketItem.id)
+        viewModel.getMarketTransactionById(marketItemId)
     }
 
     companion object {
-        const val EXTRA_MARKET_TRANSACTIONS_ITEM_KEY = "EXTRA_MARKET_TRANSACTIONS_ITEM_KEY"
+        const val EXTRA_MARKET_ITEM_ID_KEY = "EXTRA_MARKET_ITEM_ID_KEY"
     }
 }

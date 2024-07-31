@@ -19,7 +19,9 @@ import com.ukmprogramming.recyco.util.Helpers
 import com.ukmprogramming.recyco.util.ResultState
 import com.ukmprogramming.recyco.util.UserRoles
 import com.ukmprogramming.recyco.util.handleHttpException
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProductDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProductDetailBinding
     private val viewModel by viewModels<ProductDetailViewModel>()
@@ -56,7 +58,11 @@ class ProductDetailActivity : AppCompatActivity() {
                 .placeholder(R.drawable.ic_broken_image)
                 .error(R.drawable.ic_broken_image)
                 .into(ivThumbnail)
-            tvDate.text = Helpers.formatDate(marketItem.postedAt.toString())
+            tvDate.text = if (marketItem.postedAt != null) {
+                Helpers.formatDate(marketItem.postedAt)
+            } else {
+                "-"
+            }
             tvProductName.text = marketItem.name
             tvWeight.text = getString(R.string.weight_template, marketItem.weight.toString())
             tvPrice.text = getString(R.string.price_template, marketItem.price.toString())

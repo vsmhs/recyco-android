@@ -6,13 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.ukmprogramming.recyco.databinding.FragmentMarketBinding
 import com.ukmprogramming.recyco.databinding.FragmentProfileBinding
 import com.ukmprogramming.recyco.ui.activities.login.LoginActivity
+import com.ukmprogramming.recyco.ui.activities.main.MainActivity
 import com.ukmprogramming.recyco.util.ResultState
+import com.ukmprogramming.recyco.util.handleHttpException
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -43,17 +46,34 @@ class ProfileFragment : Fragment() {
             }
 
             btnLogout.setOnClickListener {
-                lifecycleScope.launch {
-                    viewModel.logout()
-                    startActivity(Intent(activity, LoginActivity::class.java))
-                    activity.finish()
-                }
+                viewModel.logout()
             }
 
             viewModel.userDataState.observe(viewLifecycleOwner) { resultState ->
+                progressBar.isVisible = resultState is ResultState.Loading
+
                 if (resultState is ResultState.Success) {
                     tvName.text = resultState.data.name
                     tvPhoneNumber.text = resultState.data.phoneNumber
+                }
+            }
+
+            viewModel.logoutState.observe(viewLifecycleOwner) { resultState ->
+                progressBar.isVisible = resultState is ResultState.Loading
+
+                if (resultState is ResultState.Success) {
+                    startActivity(
+                        Intent(
+                            activity,
+                            LoginActivity::class.java
+                        )
+                    )
+                    activity.finish()
+                } else if (resultState is ResultState.Error) {
+                    resultState.exception.getData()?.handleHttpException(activity)
+                        ?.let { message ->
+                            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+                        }
                 }
             }
         }

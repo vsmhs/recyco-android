@@ -10,12 +10,16 @@ val Context.dataStore by preferencesDataStore(Constants.PREFERENCES_NAME)
 
 fun String?.formatBearerToken() = "Bearer $this"
 
-fun Exception.handleHttpException(context: Context) = if (this is HttpException) {
-    this.response()?.errorBody()?.string()?.let {
-        Gson().fromJson(it, BaseResponse::class.java).message
-    } ?: run {
+fun Exception.handleHttpException(context: Context): String {
+    printStackTrace()
+
+    return if (this is HttpException) {
+        this.response()?.errorBody()?.string()?.let {
+            Gson().fromJson(it, BaseResponse::class.java).message
+        } ?: run {
+            "Unexpected Error"
+        }
+    } else {
         "Unexpected Error"
     }
-} else {
-    "Unexpected Error"
 }

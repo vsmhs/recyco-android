@@ -15,6 +15,8 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.time.Duration
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -27,6 +29,10 @@ class DataSourceModule {
             setLevel(HttpLoggingInterceptor.Level.BODY)
         }
         val okHttpClient = OkHttpClient.Builder()
+            .connectTimeout(30000, TimeUnit.MILLISECONDS)
+            .readTimeout(30000, TimeUnit.MILLISECONDS)
+            .writeTimeout(30000, TimeUnit.MILLISECONDS)
+            .callTimeout(30000, TimeUnit.MILLISECONDS)
             .addInterceptor(httpLoggingInterceptor)
             .addInterceptor(Interceptor {
                 val originalRequest = it.request()

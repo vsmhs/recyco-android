@@ -3,30 +3,31 @@ package com.ukmprogramming.recyco.data.network.response.models
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
+import java.util.Date
 
 @Parcelize
 data class MarketItem(
-    @field:SerializedName("price")
+    @SerializedName("price")
     val price: Double,
 
-    @field:SerializedName("name")
+    @SerializedName("name")
     val name: String,
 
-    @field:SerializedName("posted_by")
+    @SerializedName("posted_by")
     val postedBy: User,
 
-    @field:SerializedName("weight")
+    @SerializedName("weight")
     val weight: Double,
 
-    @field:SerializedName("description")
+    @SerializedName("description")
     val description: String? = null,
 
-    @field:SerializedName("id")
+    @SerializedName("id")
     val id: String,
 
-    @field:SerializedName("thumbnail_url")
-    val thumbnailUrl: String? = null,
+    @SerializedName("thumbnail_url")
+    val thumbnailUrl: String,
 
-    @field:SerializedName("created_at")
-    val postedAt: String
-): Parcelable
+    @SerializedName("posted_at")
+    val postedAt: Date?
+) : Parcelable
