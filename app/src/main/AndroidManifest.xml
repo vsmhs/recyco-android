@@ -16,12 +16,6 @@
         android:theme="@style/Theme.Recyco"
         tools:targetApi="31">
         <activity
-            android:name=".Discussion"
-            android:exported="false" />
-        <activity
-            android:name=".list_articles"
-            android:exported="false" />
-        <activity
             android:name=".ui.activities.editproduct.EditProductActivity"
             android:exported="false" />
         <activity
