@@ -44,8 +44,8 @@ class DeliveryStatusActivity : AppCompatActivity() {
 
                 if (resultState is ResultState.Success) {
                     tvProductName.text = resultState.data.item.name
-                    tvProductWeight.text = resultState.data.item.weight.toString()
-                    tvProductPrice.text = resultState.data.item.price.toString()
+                    tvProductWeight.text = getString(R.string.weight_template, resultState.data.item.weight.toString())
+                    tvProductPrice.text = getString(R.string.price_template, resultState.data.item.price.toString())
 
                     val onProcessStatus = resultState.data.allStatus.firstOrNull {
                         it.status == MarketTransactionStatuses.ON_PROCESS.name

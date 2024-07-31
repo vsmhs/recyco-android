@@ -41,6 +41,7 @@ class RegisterCommunityActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfYxD3Spl-_n_zK9KL2s8UgeAEcGgflVS-V2RyCqYrrzM50aA/viewform?usp=sf_link"
+        const val FORM_URL =
+            "https://docs.google.com/forms/d/e/1FAIpQLSfYxD3Spl-_n_zK9KL2s8UgeAEcGgflVS-V2RyCqYrrzM50aA/viewform?usp=sf_link"
     }
 }

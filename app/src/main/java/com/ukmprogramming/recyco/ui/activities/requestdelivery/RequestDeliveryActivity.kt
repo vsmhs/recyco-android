@@ -47,8 +47,8 @@ class RequestDeliveryActivity : AppCompatActivity() {
                 .error(R.drawable.ic_broken_image)
                 .into(ivProductThumbnail)
             tvProductName.text = marketItem.name
-            tvProductWeight.text = marketItem.weight.toString()
-            tvProductPrice.text = marketItem.price.toString()
+            tvProductWeight.text = getString(R.string.weight_template, marketItem.weight.toString())
+            tvProductPrice.text = getString(R.string.price_template, marketItem.price.toString())
 
             val servicePrice = 5000
             val deliveryPrice =
