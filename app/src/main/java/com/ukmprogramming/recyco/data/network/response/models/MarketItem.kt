@@ -28,5 +28,5 @@ data class MarketItem(
     val thumbnailUrl: String? = null,
 
     @field:SerializedName("created_at")
-    val postedAt: String? = null
+    val postedAt: String
 ): Parcelable
