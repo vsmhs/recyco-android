@@ -22,4 +22,17 @@
     <string name="price">Harga</string>
     <string name="weight_kg">Berat (kg)</string>
     <string name="sell">Jual</string>
+    <string name="contact">Hubungi</string>
+    <string name="request_delivery">Minta Antar</string>
+    <string name="deliver_to">Antar Ke</string>
+    <string name="recipient_information">Informasi Penerima</string>
+    <string name="note">Catatan</string>
+    <string name="order_detail">Detail Pesanan</string>
+    <string name="service_deliver_fee">Total Layanan dan Ongkir</string>
+    <string name="order_request_now">Pesan dan antar sekarang</string>
+    <string name="order_time">Waktu Pemesanan</string>
+    <string name="deliver_time">Waktu Pengantaran</string>
+    <string name="done_time">Waktu Selesai</string>
+    <string name="price_template">Rp. %1$s</string>
+    <string name="weight_template">%1$s kg</string>
 </resources>

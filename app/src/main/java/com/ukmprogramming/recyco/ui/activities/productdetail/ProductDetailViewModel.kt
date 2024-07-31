@@ -1,10 +1,9 @@
-package com.ukmprogramming.recyco.ui.fragments.profile
+package com.ukmprogramming.recyco.ui.activities.productdetail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ukmprogramming.recyco.data.AuthRepository
 import com.ukmprogramming.recyco.data.UserRepository
 import com.ukmprogramming.recyco.data.network.response.models.User
 import com.ukmprogramming.recyco.util.ResultState
@@ -14,15 +13,12 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProfileViewModel @Inject constructor(
-    private val authRepository: AuthRepository,
+class ProductDetailViewModel @Inject constructor(
     private val userRepository: UserRepository,
 ) : ViewModel() {
     private val _userDataState = MutableLiveData<ResultState<User>>()
     val userDataState: LiveData<ResultState<User>>
         get() = _userDataState
-
-    suspend fun logout() = authRepository.logout()
 
     fun getUserProfile() = viewModelScope.launch {
         _userDataState.value = ResultState.Loading

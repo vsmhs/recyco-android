@@ -28,4 +28,9 @@ class ForumFragment : Fragment() {
 
         val activity = requireActivity()
     }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
 }

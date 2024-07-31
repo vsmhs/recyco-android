@@ -16,6 +16,15 @@
         android:theme="@style/Theme.Recyco"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activities.deliverystatus.DeliveryStatusActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.requestdelivery.RequestDeliveryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.productdetail.ProductDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.addproduct.AddProductActivity"
             android:exported="false" />
         <activity

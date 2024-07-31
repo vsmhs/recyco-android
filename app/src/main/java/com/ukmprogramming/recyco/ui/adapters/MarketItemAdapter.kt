@@ -5,11 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.data.network.response.models.MarketItem
 import com.ukmprogramming.recyco.databinding.ItemMarketBinding
 
 class MarketItemAdapter(
-    private val bearerToken: String,
     private val onItemCLick: (MarketItem) -> Unit
 ) : ListAdapter<MarketItem, MarketItemAdapter.ViewHolder>(
     object : DiffUtil.ItemCallback<MarketItem>() {
@@ -32,5 +33,19 @@ class MarketItemAdapter(
         val binding = holder.binding
         val context = holder.itemView.context
         val data = getItem(position)
+
+        binding.apply {
+            tvTitle.text = data.name
+            tvWeight.text = context.getString(R.string.weight_template, data.weight.toString())
+            tvPrice.text = context.getString(R.string.price_template, data.price.toString())
+            Glide.with(context)
+                .load(data.thumbnailUrl)
+                .placeholder(R.drawable.ic_broken_image)
+                .error(R.drawable.ic_broken_image)
+                .into(ivThumbnail)
+            root.setOnClickListener {
+                onItemCLick(data)
+            }
+        }
     }
 }

@@ -10,6 +10,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -27,6 +28,14 @@ class DataSourceModule {
         }
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
+            .addInterceptor(Interceptor {
+                val originalRequest = it.request()
+                val newRequest = originalRequest.newBuilder()
+                    .header("ngrok-skip-browser-warning", "ngrok-skip-browser-warning")
+                    .method(originalRequest.method, originalRequest.body)
+                    .build()
+                it.proceed(newRequest)
+            })
             .build()
         val retrofit = Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)

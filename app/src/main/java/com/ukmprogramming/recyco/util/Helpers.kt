@@ -8,6 +8,8 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 object Helpers {
     fun createCustomTempFile(context: Context): File {
@@ -44,5 +46,13 @@ object Helpers {
         outputStream.close()
         inputStream.close()
         return myFile
+    }
+
+    fun formatDate(date: String) : String {
+        return SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.ENGLISH).format(date)
+    }
+
+    fun formatDate(date: String?) : String {
+        return SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.ENGLISH).format(date) ?: "-"
     }
 }

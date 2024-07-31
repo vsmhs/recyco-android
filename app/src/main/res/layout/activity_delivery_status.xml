@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.deliverystatus.DeliveryStatusActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/iv_product_thumbnail"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_bar"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/tv_product_weight"
+        style="@style/TextAppearance.Material3.LabelLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/iv_product_thumbnail"
+        app:layout_constraintTop_toTopOf="@+id/iv_product_thumbnail"
+        tools:text="0 kg" />
+
+    <TextView
+        android:id="@+id/tv_product_price"
+        style="@style/TextAppearance.Material3.LabelLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_product_weight"
+        app:layout_constraintTop_toTopOf="@+id/iv_product_thumbnail"
+        tools:text="Rp. 0" />
+
+    <TextView
+        android:id="@+id/tv_product_name"
+        style="@style/TextAppearance.Material3.BodyMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_product_thumbnail"
+        app:layout_constraintStart_toEndOf="@+id/iv_product_thumbnail"
+        tools:text="Nama Produk" />
+
+    <ImageView
+        android:id="@+id/iv_order_time"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/ic_time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_product_thumbnail" />
+    
+    <TextView
+        android:id="@+id/tv_order_time_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/order_time"
+        android:layout_marginHorizontal="8dp"
+        style="@style/TextAppearance.Material3.LabelLarge"
+        app:layout_constraintStart_toEndOf="@+id/iv_order_time"
+        app:layout_constraintTop_toTopOf="@+id/iv_order_time"/>
+
+    <TextView
+        android:id="@+id/tv_order_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="12 Maret 2024 11:00"
+        android:layout_marginHorizontal="8dp"
+        style="@style/TextAppearance.Material3.BodyMedium"
+        app:layout_constraintStart_toEndOf="@+id/iv_order_time"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_order_time"/>
+
+    <ImageView
+        android:id="@+id/iv_deliver"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/ic_deliver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_order_time" />
+
+    <TextView
+        android:id="@+id/tv_deliver_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/deliver_time"
+        android:layout_marginHorizontal="8dp"
+        style="@style/TextAppearance.Material3.LabelLarge"
+        app:layout_constraintStart_toEndOf="@+id/iv_deliver"
+        app:layout_constraintTop_toTopOf="@+id/iv_deliver"/>
+
+    <TextView
+        android:id="@+id/tv_deliver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="12 Maret 2024 11:00"
+        android:layout_marginHorizontal="8dp"
+        style="@style/TextAppearance.Material3.BodyMedium"
+        app:layout_constraintStart_toEndOf="@+id/iv_deliver"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_deliver"/>
+
+    <ImageView
+        android:id="@+id/iv_complete"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/ic_check"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_deliver" />
+
+    <TextView
+        android:id="@+id/tv_complete_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/done_time"
+        android:layout_marginHorizontal="8dp"
+        style="@style/TextAppearance.Material3.LabelLarge"
+        app:layout_constraintStart_toEndOf="@+id/iv_complete"
+        app:layout_constraintTop_toTopOf="@+id/iv_complete"/>
+
+    <TextView
+        android:id="@+id/tv_complete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="12 Maret 2024 11:00"
+        android:layout_marginHorizontal="8dp"
+        style="@style/TextAppearance.Material3.BodyMedium"
+        app:layout_constraintStart_toEndOf="@+id/iv_complete"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_complete"/>
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
