@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.ukmprogramming.recyco.databinding.FragmentHomeBinding
 import com.ukmprogramming.recyco.ui.activities.articlelist.ArticleListActivity
 import com.ukmprogramming.recyco.ui.activities.community.CommunityActivity
+import com.ukmprogramming.recyco.ui.activities.location.LocationActivity
 import com.ukmprogramming.recyco.ui.activities.registercommunity.RegisterCommunityActivity
 import com.ukmprogramming.recyco.ui.activities.reward.RewardActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,7 +44,7 @@ class HomeFragment : Fragment() {
             }
 
             btnLocation.setOnClickListener {
-                // TODO: to location activity
+                startActivity(Intent(activity, LocationActivity::class.java))
             }
 
             btnArticle.setOnClickListener {

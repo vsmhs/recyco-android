@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.model.GlideUrl
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.databinding.ActivityDeliveryStatusBinding
 import com.ukmprogramming.recyco.util.Constants
@@ -44,8 +45,10 @@ class DeliveryStatusActivity : AppCompatActivity() {
 
                 if (resultState is ResultState.Success) {
                     tvProductName.text = resultState.data.item.name
-                    tvProductWeight.text = getString(R.string.weight_template, resultState.data.item.weight.toString())
-                    tvProductPrice.text = getString(R.string.price_template, resultState.data.item.price.toString())
+                    tvProductWeight.text =
+                        getString(R.string.weight_template, resultState.data.item.weight.toString())
+                    tvProductPrice.text =
+                        getString(R.string.price_template, resultState.data.item.price.toString())
 
                     val onProcessStatus = resultState.data.allStatus.firstOrNull {
                         it.status == MarketTransactionStatuses.ON_PROCESS.name
@@ -58,7 +61,17 @@ class DeliveryStatusActivity : AppCompatActivity() {
                     }
 
                     Glide.with(this@DeliveryStatusActivity)
-                        .load("${Constants.BASE_URL}${resultState.data.item.thumbnailUrl}")
+                        .load(
+                            GlideUrl("${Constants.BASE_URL}${resultState.data.item.thumbnailUrl}") {
+                                mapOf(
+                                    Pair(
+                                        "ngrok-skip-browser-warning",
+                                        "ngrok-skip-browser-warning"
+                                    )
+                                )
+                            }
+                        )
+                        .timeout(30000)
                         .error(R.drawable.ic_broken_image)
                         .placeholder(R.drawable.ic_broken_image)
                         .into(binding.ivProductThumbnail)

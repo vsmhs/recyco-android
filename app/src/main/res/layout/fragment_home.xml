@@ -240,4 +240,24 @@
 
     </com.google.android.material.card.MaterialCardView>
 
+    <TextView
+        android:id="@+id/tv_ads_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Iklan Pengolahan Limbah"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_location" />
+
+    <ImageView
+        android:id="@+id/iv_ads"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:adjustViewBounds="true"
+        android:layout_marginHorizontal="16dp"
+        android:src="@drawable/ads_banner"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ads_title" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

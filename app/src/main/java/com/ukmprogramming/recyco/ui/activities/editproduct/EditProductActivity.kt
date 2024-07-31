@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.model.GlideUrl
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.data.network.response.models.MarketItem
 import com.ukmprogramming.recyco.databinding.ActivityEditProductBinding
@@ -41,7 +42,10 @@ class EditProductActivity : AppCompatActivity() {
 
         binding.apply {
             Glide.with(this@EditProductActivity)
-                .load("${Constants.BASE_URL}${marketItem.thumbnailUrl}")
+                .load(GlideUrl("${Constants.BASE_URL}${marketItem.thumbnailUrl}") {
+                    mapOf(Pair("ngrok-skip-browser-warning", "ngrok-skip-browser-warning"))
+                })
+                .timeout(30000)
                 .placeholder(R.drawable.ic_broken_image)
                 .error(R.drawable.ic_broken_image)
                 .into(ivThumbnail)

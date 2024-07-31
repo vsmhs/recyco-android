@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.model.GlideUrl
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.data.network.response.models.MarketItem
 import com.ukmprogramming.recyco.databinding.ItemMarketBinding
@@ -40,7 +41,10 @@ class MarketItemAdapter(
             tvWeight.text = context.getString(R.string.weight_template, data.weight.toString())
             tvPrice.text = context.getString(R.string.price_template, data.price.toString())
             Glide.with(context)
-                .load("${Constants.BASE_URL}${data.thumbnailUrl}")
+                .load(GlideUrl("${Constants.BASE_URL}${data.thumbnailUrl}") {
+                    mapOf(Pair("ngrok-skip-browser-warning", "ngrok-skip-browser-warning"))
+                })
+                .timeout(30000)
                 .placeholder(R.drawable.ic_broken_image)
                 .error(R.drawable.ic_broken_image)
                 .into(ivThumbnail)

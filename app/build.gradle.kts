@@ -4,6 +4,7 @@ plugins {
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
     id("kotlin-parcelize")
+    alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
 }
 
 android {
@@ -52,6 +53,7 @@ dependencies {
 
     // dagger hilt
     implementation("com.google.dagger:hilt-android:2.51.1")
+    implementation(libs.play.services.maps)
     ksp("com.google.dagger:hilt-compiler:2.51.1")
 
     // glide

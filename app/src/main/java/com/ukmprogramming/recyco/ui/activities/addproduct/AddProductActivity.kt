@@ -30,6 +30,8 @@ class AddProductActivity : AppCompatActivity() {
             imageFile = Helpers.uriToFile(it, this)
             Glide.with(this)
                 .load(imageFile)
+                .placeholder(R.drawable.ic_broken_image)
+                .error(R.drawable.ic_broken_image)
                 .into(binding.ivPreview)
         } else {
             Toast.makeText(this, "Failed to get image", Toast.LENGTH_SHORT).show()

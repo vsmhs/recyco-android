@@ -13,7 +13,7 @@ data class TreatmentLocation(
     val description: String,
 
     @field:SerializedName("lon")
-    val lon: Int,
+    val lon: Double,
 
     @field:SerializedName("id")
     val id: String,
@@ -22,5 +22,5 @@ data class TreatmentLocation(
     val title: String,
 
     @field:SerializedName("lat")
-    val lat: Int
+    val lat: Double
 ) : Parcelable

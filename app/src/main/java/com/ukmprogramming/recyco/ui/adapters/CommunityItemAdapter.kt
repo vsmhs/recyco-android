@@ -2,12 +2,14 @@ package com.ukmprogramming.recyco.ui.adapters
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.model.GlideUrl
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.data.network.response.models.Community
 import com.ukmprogramming.recyco.databinding.ItemCommunityBinding
@@ -39,7 +41,10 @@ class CommunityItemAdapter(
 
         binding.apply {
             Glide.with(context)
-                .load("${Constants.BASE_URL}${data.thumbnailUrl}")
+                .load(GlideUrl("${Constants.BASE_URL}${data.thumbnailUrl}") {
+                    mapOf(Pair("ngrok-skip-browser-warning", "ngrok-skip-browser-warning"))
+                })
+                .timeout(30000)
                 .error(R.drawable.ic_broken_image)
                 .placeholder(R.drawable.ic_broken_image)
                 .into(binding.ivThumbnail)
@@ -48,7 +53,7 @@ class CommunityItemAdapter(
             tvDescription.text = data.description
 
             btnMoreInfo.setOnClickListener {
-                Intent(Intent.ACTION_VIEW, Uri.parse(data.communityUrl))
+                context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(data.communityUrl)))
             }
 
             root.setOnClickListener {

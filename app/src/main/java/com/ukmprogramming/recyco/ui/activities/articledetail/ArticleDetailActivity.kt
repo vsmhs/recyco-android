@@ -41,6 +41,7 @@ class ArticleDetailActivity : AppCompatActivity() {
                 .load(GlideUrl("${Constants.BASE_URL}${article.thumbnailUrl}") {
                     mapOf(Pair("ngrok-skip-browser-warning", "ngrok-skip-browser-warning"))
                 })
+                .timeout(30000)
                 .error(R.drawable.ic_broken_image)
                 .placeholder(R.drawable.ic_broken_image)
                 .into(binding.ivThumbnail)

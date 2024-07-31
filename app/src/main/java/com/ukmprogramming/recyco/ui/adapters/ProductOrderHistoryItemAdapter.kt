@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.model.GlideUrl
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.data.network.response.models.MarketTransactionsItem
 import com.ukmprogramming.recyco.databinding.ItemProductOrderHistoryBinding
@@ -45,7 +46,10 @@ class ProductOrderHistoryItemAdapter(
 
         binding.apply {
             Glide.with(context)
-                .load("${Constants.BASE_URL}${data.item.thumbnailUrl}")
+                .load(GlideUrl("${Constants.BASE_URL}${data.item.thumbnailUrl}") {
+                    mapOf(Pair("ngrok-skip-browser-warning", "ngrok-skip-browser-warning"))
+                })
+                .timeout(30000)
                 .placeholder(R.drawable.ic_broken_image)
                 .error(R.drawable.ic_broken_image)
                 .into(ivThumbnail)

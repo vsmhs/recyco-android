@@ -65,4 +65,6 @@
     <string name="register_community">Daftar Komunitas</string>
     <string name="register">Daftar</string>
     <string name="community">Komunitas</string>
+    <string name="title_activity_location">LocationActivity</string>
+    <string name="treatment_location">Lokasi Depo Limbah</string>
 </resources>

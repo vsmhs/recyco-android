@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.databinding.ActivityCommunityBinding
 import com.ukmprogramming.recyco.ui.adapters.CommunityItemAdapter
@@ -33,6 +34,10 @@ class CommunityActivity : AppCompatActivity() {
         }
 
         binding.apply {
+            recyclerView.apply {
+                adapter = communityItemAdapter
+                layoutManager = LinearLayoutManager(this@CommunityActivity)
+            }
             viewModel.communityDataState.observe(this@CommunityActivity) { resultState ->
                 progressBar.isVisible = resultState is ResultState.Loading
 

@@ -44,7 +44,6 @@ class DataSourceModule {
             .build()
         val retrofit = Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
-            // TODO add ngrok header
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
