@@ -28,6 +28,28 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val activity = requireActivity()
+
+        binding.apply {
+            cvCoins.setOnClickListener {
+                // TODO: to progress reward activity
+            }
+
+            cvRegisterCommunity.setOnClickListener {
+                // TODO: to register community activity
+            }
+
+            btnLocation.setOnClickListener {
+                // TODO: to location activity
+            }
+
+            btnArticle.setOnClickListener {
+                // TODO: to article activity
+            }
+
+            btnCommunity.setOnClickListener {
+                // TODO: to community activity
+            }
+        }
     }
 
     override fun onDestroyView() {
