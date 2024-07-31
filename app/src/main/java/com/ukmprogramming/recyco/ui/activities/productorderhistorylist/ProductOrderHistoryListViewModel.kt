@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ukmprogramming.recyco.data.MarketRepository
-import com.ukmprogramming.recyco.data.network.response.models.MarketItem
 import com.ukmprogramming.recyco.data.network.response.models.MarketTransactionsItem
 import com.ukmprogramming.recyco.util.ResultState
 import com.ukmprogramming.recyco.util.SingleEvent

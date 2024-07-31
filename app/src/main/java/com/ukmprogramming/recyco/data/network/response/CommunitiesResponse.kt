@@ -1,11 +1,11 @@
 package com.ukmprogramming.recyco.data.network.response
 
 import com.google.gson.annotations.SerializedName
-import com.ukmprogramming.recyco.data.network.response.models.MarketTransactionsItem
+import com.ukmprogramming.recyco.data.network.response.models.Community
 
-data class MarketTransactionsResponse(
+data class CommunitiesResponse(
     @field:SerializedName("data")
-    val data: List<MarketTransactionsItem>? = null,
+    val data: List<Community>? = null,
 
     @field:SerializedName("success")
     val success: Boolean,

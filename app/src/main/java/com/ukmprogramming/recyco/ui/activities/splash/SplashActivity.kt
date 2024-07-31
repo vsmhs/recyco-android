@@ -2,13 +2,9 @@ package com.ukmprogramming.recyco.ui.activities.splash
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
-import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.databinding.ActivitySplashBinding
 import com.ukmprogramming.recyco.ui.activities.login.LoginActivity
 import com.ukmprogramming.recyco.ui.activities.main.MainActivity

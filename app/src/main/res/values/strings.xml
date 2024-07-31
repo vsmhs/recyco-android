@@ -63,4 +63,6 @@
     <string name="reward_3_total">2500 koin</string>
     <string name="article_detail">Detail Artikel</string>
     <string name="register_community">Daftar Komunitas</string>
+    <string name="register">Daftar</string>
+    <string name="community">Komunitas</string>
 </resources>

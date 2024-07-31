@@ -9,7 +9,6 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
 import java.text.SimpleDateFormat
-import java.util.Date
 import java.util.Locale
 
 object Helpers {
@@ -49,7 +48,21 @@ object Helpers {
         return myFile
     }
 
-    fun formatDate(date: Date): String {
-        return SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.ENGLISH).format(date)
+    fun formatDate(date: String): String {
+        return SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(
+            SimpleDateFormat(
+                "yyyy-MM-dd'T'HH:mm:ssZ",
+                Locale.ENGLISH
+            ).parse(date)
+        )
+    }
+
+    fun formatDateNoTime(date: String): String {
+        return SimpleDateFormat("yyyy-MM-dd").format(
+            SimpleDateFormat(
+                "yyyy-MM-dd'T'HH:mm:ssZ",
+                Locale.ENGLISH
+            ).parse(date)
+        )
     }
 }

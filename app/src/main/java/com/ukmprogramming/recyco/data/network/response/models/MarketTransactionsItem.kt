@@ -7,11 +7,11 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class MarketTransactionsItem(
     @SerializedName("item")
-	val item: MarketItem,
+    val item: MarketItem,
 
     @SerializedName("last_status")
-	val lastStatus: MarketTransactionStatusModel,
+    val lastStatus: MarketTransactionStatusModel,
 
     @SerializedName("id")
-	val id: String
-): Parcelable
+    val id: String
+) : Parcelable

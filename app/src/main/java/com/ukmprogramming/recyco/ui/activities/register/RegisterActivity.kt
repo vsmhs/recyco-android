@@ -1,18 +1,11 @@
 package com.ukmprogramming.recyco.ui.activities.register
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
-import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.databinding.ActivityRegisterBinding
-import com.ukmprogramming.recyco.ui.activities.login.LoginActivity
-import com.ukmprogramming.recyco.ui.activities.main.MainActivity
 import com.ukmprogramming.recyco.util.ResultState
 import com.ukmprogramming.recyco.util.UserRoles
 import com.ukmprogramming.recyco.util.handleHttpException
@@ -39,10 +32,10 @@ class RegisterActivity : AppCompatActivity() {
                 val phoneNumber = etPhoneNumber.text.toString()
                 val password = etPassword.text.toString()
                 val role = when (etRole.text.toString()) {
-                    UserRoles.P_SMALL.name -> UserRoles.P_SMALL
-                    UserRoles.P_LARGE.name -> UserRoles.P_LARGE
-                    UserRoles.C_SMALL.name -> UserRoles.C_SMALL
-                    UserRoles.C_LARGE.name -> UserRoles.C_LARGE
+                    "Produsen Skala Kecil" -> UserRoles.P_SMALL
+                    "Produsen Skala Besar" -> UserRoles.P_LARGE
+                    "Kolektor Skala Kecil" -> UserRoles.C_SMALL
+                    "Kolektor Skala Besar" -> UserRoles.C_LARGE
                     else -> {
                         return@setOnClickListener
                     }

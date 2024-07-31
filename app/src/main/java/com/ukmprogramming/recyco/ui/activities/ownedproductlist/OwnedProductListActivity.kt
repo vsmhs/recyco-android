@@ -10,8 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.databinding.ActivityOwnedProductListBinding
 import com.ukmprogramming.recyco.ui.activities.editproduct.EditProductActivity
-import com.ukmprogramming.recyco.ui.activities.productdetail.ProductDetailActivity
-import com.ukmprogramming.recyco.ui.adapters.MarketItemAdapter
+import com.ukmprogramming.recyco.ui.adapters.OwnedProductItemAdapter
 import com.ukmprogramming.recyco.util.ResultState
 import com.ukmprogramming.recyco.util.handleHttpException
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,7 +20,7 @@ class OwnedProductListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOwnedProductListBinding
     private val viewModel by viewModels<OwnedProductListViewModel>()
 
-    private val dataAdapter = MarketItemAdapter {
+    private val dataAdapter = OwnedProductItemAdapter {
         startActivity(Intent(this, EditProductActivity::class.java).apply {
             putExtra(EditProductActivity.EXTRA_MARKET_ITEM_KEY, it.copy())
         })

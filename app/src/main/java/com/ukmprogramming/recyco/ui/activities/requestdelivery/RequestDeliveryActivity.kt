@@ -2,18 +2,15 @@ package com.ukmprogramming.recyco.ui.activities.requestdelivery
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.data.network.response.models.MarketItem
 import com.ukmprogramming.recyco.databinding.ActivityRequestDeliveryBinding
 import com.ukmprogramming.recyco.ui.activities.productdetail.ProductDetailActivity
-import com.ukmprogramming.recyco.ui.activities.productdetail.ProductDetailActivity.Companion
+import com.ukmprogramming.recyco.util.Constants
 import com.ukmprogramming.recyco.util.ResultState
 import com.ukmprogramming.recyco.util.handleHttpException
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,7 +42,7 @@ class RequestDeliveryActivity : AppCompatActivity() {
 
         binding.apply {
             Glide.with(this@RequestDeliveryActivity)
-                .load(marketItem.thumbnailUrl)
+                .load("${Constants.BASE_URL}${marketItem.thumbnailUrl}")
                 .placeholder(R.drawable.ic_broken_image)
                 .error(R.drawable.ic_broken_image)
                 .into(ivProductThumbnail)
@@ -54,8 +51,10 @@ class RequestDeliveryActivity : AppCompatActivity() {
             tvProductPrice.text = marketItem.price.toString()
 
             val servicePrice = 5000
-            val deliveryPrice = if(marketItem.price <= 100) (100/10)*2500 else (100/10*2000)
-            tvFee.text = getString(R.string.price_template, (servicePrice + deliveryPrice).toString())
+            val deliveryPrice =
+                if (marketItem.price <= 100) (100 / 10) * 1000 else (100 / 10 * 1500)
+            tvFee.text =
+                getString(R.string.price_template, (servicePrice + deliveryPrice).toString())
 
             btnRequestDelivery.setOnClickListener {
                 val address = etAddress.text.toString()

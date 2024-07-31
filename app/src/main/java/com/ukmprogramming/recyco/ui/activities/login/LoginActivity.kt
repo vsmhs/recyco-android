@@ -3,13 +3,9 @@ package com.ukmprogramming.recyco.ui.activities.login
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
-import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.databinding.ActivityLoginBinding
 import com.ukmprogramming.recyco.ui.activities.main.MainActivity
 import com.ukmprogramming.recyco.ui.activities.register.RegisterActivity

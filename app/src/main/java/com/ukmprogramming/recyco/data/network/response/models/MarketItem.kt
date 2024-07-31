@@ -3,7 +3,6 @@ package com.ukmprogramming.recyco.data.network.response.models
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
-import java.util.Date
 
 @Parcelize
 data class MarketItem(
@@ -28,6 +27,6 @@ data class MarketItem(
     @SerializedName("thumbnail_url")
     val thumbnailUrl: String,
 
-    @SerializedName("posted_at")
-    val postedAt: Date?
+    @SerializedName("created_at")
+    val postedAt: String
 ) : Parcelable

@@ -2,14 +2,13 @@ package com.ukmprogramming.recyco.ui.fragments.home
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.ukmprogramming.recyco.R
+import androidx.fragment.app.Fragment
 import com.ukmprogramming.recyco.databinding.FragmentHomeBinding
 import com.ukmprogramming.recyco.ui.activities.articlelist.ArticleListActivity
-import com.ukmprogramming.recyco.ui.activities.community.CommunityViewModel
+import com.ukmprogramming.recyco.ui.activities.community.CommunityActivity
 import com.ukmprogramming.recyco.ui.activities.registercommunity.RegisterCommunityActivity
 import com.ukmprogramming.recyco.ui.activities.reward.RewardActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -52,7 +51,7 @@ class HomeFragment : Fragment() {
             }
 
             btnCommunity.setOnClickListener {
-                startActivity(Intent(activity, CommunityViewModel::class.java))
+                startActivity(Intent(activity, CommunityActivity::class.java))
             }
         }
     }

@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.data.network.response.models.MarketTransactionsItem
 import com.ukmprogramming.recyco.databinding.ItemProductOrderHistoryBinding
+import com.ukmprogramming.recyco.util.Constants
 import com.ukmprogramming.recyco.util.Helpers
 import com.ukmprogramming.recyco.util.MarketTransactionStatuses
 
@@ -44,7 +45,7 @@ class ProductOrderHistoryItemAdapter(
 
         binding.apply {
             Glide.with(context)
-                .load(data.item.thumbnailUrl)
+                .load("${Constants.BASE_URL}${data.item.thumbnailUrl}")
                 .placeholder(R.drawable.ic_broken_image)
                 .error(R.drawable.ic_broken_image)
                 .into(ivThumbnail)

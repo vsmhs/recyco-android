@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.ukmprogramming.recyco.data.MarketRepository
 import com.ukmprogramming.recyco.util.ResultState
 import com.ukmprogramming.recyco.util.SingleEvent
-import com.ukmprogramming.recyco.util.UserRoles
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

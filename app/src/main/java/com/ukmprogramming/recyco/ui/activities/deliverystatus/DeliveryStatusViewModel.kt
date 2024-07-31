@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ukmprogramming.recyco.data.MarketRepository
-import com.ukmprogramming.recyco.data.network.response.models.MarketItem
 import com.ukmprogramming.recyco.data.network.response.models.MarketTransactionItem
 import com.ukmprogramming.recyco.util.ResultState
 import com.ukmprogramming.recyco.util.SingleEvent
@@ -30,7 +29,8 @@ class DeliveryStatusViewModel @Inject constructor(
             if (response.success && response.data != null) {
                 _marketTransactionDataState.value = ResultState.Success(response.data)
             } else {
-                _marketTransactionDataState.value = ResultState.Error(SingleEvent(Exception(response.message)))
+                _marketTransactionDataState.value =
+                    ResultState.Error(SingleEvent(Exception(response.message)))
             }
         } catch (e: Exception) {
             _marketTransactionDataState.value = ResultState.Error(SingleEvent(e))

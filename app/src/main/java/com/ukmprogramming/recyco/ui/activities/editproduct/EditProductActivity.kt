@@ -1,17 +1,15 @@
 package com.ukmprogramming.recyco.ui.activities.editproduct
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.bumptech.glide.Glide
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.data.network.response.models.MarketItem
 import com.ukmprogramming.recyco.databinding.ActivityEditProductBinding
-import com.ukmprogramming.recyco.ui.activities.main.MainActivity
-import com.ukmprogramming.recyco.ui.activities.productdetail.ProductDetailActivity
-import com.ukmprogramming.recyco.ui.activities.productdetail.ProductDetailActivity.Companion
+import com.ukmprogramming.recyco.util.Constants
 import com.ukmprogramming.recyco.util.MarketTransactionStatuses
 import com.ukmprogramming.recyco.util.ResultState
 import com.ukmprogramming.recyco.util.UserRoles
@@ -42,6 +40,12 @@ class EditProductActivity : AppCompatActivity() {
         }
 
         binding.apply {
+            Glide.with(this@EditProductActivity)
+                .load("${Constants.BASE_URL}${marketItem.thumbnailUrl}")
+                .placeholder(R.drawable.ic_broken_image)
+                .error(R.drawable.ic_broken_image)
+                .into(ivThumbnail)
+
             tvProductName.text = marketItem.name
             tvPrice.text = marketItem.price.toString()
             tvWeight.text = marketItem.weight.toString()

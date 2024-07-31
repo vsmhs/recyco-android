@@ -97,7 +97,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btn_comment">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_name"
+            android:id="@+id/et_comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/add_comment"

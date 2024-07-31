@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.data.network.response.models.MarketItem
-import com.ukmprogramming.recyco.databinding.ItemMarketBinding
+import com.ukmprogramming.recyco.databinding.ItemOwnedProductBinding
 import com.ukmprogramming.recyco.util.Constants
 
-class MarketItemAdapter(
+class OwnedProductItemAdapter(
     private val onItemCLick: (MarketItem) -> Unit
-) : ListAdapter<MarketItem, MarketItemAdapter.ViewHolder>(
+) : ListAdapter<MarketItem, OwnedProductItemAdapter.ViewHolder>(
     object : DiffUtil.ItemCallback<MarketItem>() {
         override fun areItemsTheSame(oldItem: MarketItem, newItem: MarketItem) =
             oldItem.id == newItem.id
@@ -23,11 +23,11 @@ class MarketItemAdapter(
     }
 ) {
     class ViewHolder(
-        val binding: ItemMarketBinding
+        val binding: ItemOwnedProductBinding
     ) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
-        ItemMarketBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        ItemOwnedProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -36,7 +36,7 @@ class MarketItemAdapter(
         val data = getItem(position)
 
         binding.apply {
-            tvTitle.text = data.name
+            tvName.text = data.name
             tvWeight.text = context.getString(R.string.weight_template, data.weight.toString())
             tvPrice.text = context.getString(R.string.price_template, data.price.toString())
             Glide.with(context)

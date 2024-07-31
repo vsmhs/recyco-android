@@ -4,17 +4,15 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.data.network.response.models.MarketItem
 import com.ukmprogramming.recyco.databinding.ActivityProductDetailBinding
 import com.ukmprogramming.recyco.ui.activities.requestdelivery.RequestDeliveryActivity
+import com.ukmprogramming.recyco.util.Constants
 import com.ukmprogramming.recyco.util.Helpers
 import com.ukmprogramming.recyco.util.ResultState
 import com.ukmprogramming.recyco.util.UserRoles
@@ -61,7 +59,7 @@ class ProductDetailActivity : AppCompatActivity() {
             }
 
             Glide.with(this@ProductDetailActivity)
-                .load(marketItem.thumbnailUrl)
+                .load("${Constants.BASE_URL}${marketItem.thumbnailUrl}")
                 .placeholder(R.drawable.ic_broken_image)
                 .error(R.drawable.ic_broken_image)
                 .into(ivThumbnail)

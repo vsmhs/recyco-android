@@ -5,10 +5,10 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.bumptech.glide.Glide
 import com.ukmprogramming.recyco.R
-import com.ukmprogramming.recyco.data.network.response.models.MarketItem
-import com.ukmprogramming.recyco.data.network.response.models.MarketTransactionsItem
 import com.ukmprogramming.recyco.databinding.ActivityDeliveryStatusBinding
+import com.ukmprogramming.recyco.util.Constants
 import com.ukmprogramming.recyco.util.Helpers
 import com.ukmprogramming.recyco.util.MarketTransactionStatuses
 import com.ukmprogramming.recyco.util.ResultState
@@ -56,6 +56,12 @@ class DeliveryStatusActivity : AppCompatActivity() {
                     val finishedStatus = resultState.data.allStatus.firstOrNull {
                         it.status == MarketTransactionStatuses.FINISHED.name
                     }
+
+                    Glide.with(this@DeliveryStatusActivity)
+                        .load("${Constants.BASE_URL}${resultState.data.item.thumbnailUrl}")
+                        .error(R.drawable.ic_broken_image)
+                        .placeholder(R.drawable.ic_broken_image)
+                        .into(binding.ivProductThumbnail)
 
                     tvOrderTime.text =
                         onProcessStatus?.createdAt?.let { Helpers.formatDate(it) } ?: "-"
