@@ -40,4 +40,7 @@
     <string name="welcome">Selamat Datang</string>
     <string name="coin_total">2400 koin</string>
     <string name="check_reward">Cek Hadiah</string>
+    <string name="register_your_community">Daftarkan Komunitas Anda</string>
+    <string name="waste_treatment_location">Lokasi Depo Limbah</string>
+    <string name="article">Artikel</string>
 </resources>
