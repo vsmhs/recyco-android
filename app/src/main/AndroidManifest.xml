@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Recyco"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activities.registercommunity.RegisterCommunityActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.reward.RewardActivity"
             android:exported="false" />
         <activity
