@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Recyco</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_header">Masuk ke akun Recyco</string>
+    <string name="phone_number">Nomor Telepon</string>
+    <string name="password">Kata Sandi</string>
+    <string name="no_account_yet">Belum punya akun? Daftar disini</string>
+    <string name="login">Login</string>
+    <string name="register_header">Daftar ke Recyco</string>
+    <string name="organization_individual_name">Nama Individu/Institusi</string>
+    <string name="user_category">Kategori Pengguna</string>
+    <string name="have_account_yet">Sudah punya akun? Login disini</string>
+    <string name="recyco_coins">Recyco Coins</string>
+    <string name="logout">Logout</string>
+    <string name="waste_market">Pasar Limbah</string>
+    <string name="my_waste">Limbah Saya</string>
+    <string name="order_history">Riwayat Pemesanan</string>
+    <string name="add_image">Tambah Gambar</string>
+    <string name="name">Nama</string>
+    <string name="description">Deskripsi</string>
+    <string name="price">Harga</string>
+    <string name="weight_kg">Berat (kg)</string>
+    <string name="sell">Jual</string>
 </resources>

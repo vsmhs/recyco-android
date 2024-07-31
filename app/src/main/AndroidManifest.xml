@@ -16,6 +16,18 @@
         android:theme="@style/Theme.Recyco"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activities.addproduct.AddProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.register.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.splash.SplashActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.main.MainActivity"
             android:exported="true">
             <intent-filter>
@@ -23,7 +35,20 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity> <!-- suppress AndroidDomInspection -->
+        <service
+            android:name="com.google.android.gms.metadata.ModuleDependencies"
+            android:enabled="false"
+            android:exported="false"
+            tools:ignore="MissingClass">
+            <intent-filter>
+                <action android:name="com.google.android.gms.metadata.MODULE_DEPENDENCIES" />
+            </intent-filter>
+
+            <meta-data
+                android:name="photopicker_activity:0:required"
+                android:value="" />
+        </service>
     </application>
 
 </manifest>
