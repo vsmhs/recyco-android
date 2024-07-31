@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
+import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.databinding.ActivityOwnedProductListBinding
 import com.ukmprogramming.recyco.ui.activities.editproduct.EditProductActivity
 import com.ukmprogramming.recyco.ui.activities.productdetail.ProductDetailActivity
@@ -31,6 +32,13 @@ class OwnedProductListActivity : AppCompatActivity() {
 
         binding = ActivityOwnedProductListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.apply {
+            title = getString(R.string.my_waste_product)
+            setDisplayShowHomeEnabled(true)
+            setDisplayHomeAsUpEnabled(true)
+        }
 
         binding.apply {
             recyclerView.apply {
@@ -57,5 +65,10 @@ class OwnedProductListActivity : AppCompatActivity() {
         }
 
         viewModel.getSelfMarketItems()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return super.onSupportNavigateUp()
     }
 }

@@ -29,6 +29,13 @@ class RequestDeliveryActivity : AppCompatActivity() {
         binding = ActivityRequestDeliveryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.apply {
+            title = getString(R.string.request_delivery)
+            setDisplayShowHomeEnabled(true)
+            setDisplayHomeAsUpEnabled(true)
+        }
+
         val marketItem =
             intent.getParcelableExtra<MarketItem>(ProductDetailActivity.EXTRA_MARKET_ITEM_KEY)
                 ?: run {
@@ -89,6 +96,11 @@ class RequestDeliveryActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return super.onSupportNavigateUp()
     }
 
     companion object {

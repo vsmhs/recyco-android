@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.data.network.response.models.MarketItem
 import com.ukmprogramming.recyco.data.network.response.models.MarketTransactionsItem
 import com.ukmprogramming.recyco.databinding.ActivityDeliveryStatusBinding
@@ -28,6 +29,13 @@ class DeliveryStatusActivity : AppCompatActivity() {
         val marketItemId = intent.getStringExtra(EXTRA_MARKET_ITEM_ID_KEY) ?: run {
             finish()
             return
+        }
+
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.apply {
+            title = getString(R.string.delivery_status)
+            setDisplayShowHomeEnabled(true)
+            setDisplayHomeAsUpEnabled(true)
         }
 
         binding.apply {
@@ -67,6 +75,11 @@ class DeliveryStatusActivity : AppCompatActivity() {
         }
 
         viewModel.getMarketTransactionById(marketItemId)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return super.onSupportNavigateUp()
     }
 
     companion object {

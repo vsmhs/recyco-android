@@ -19,6 +19,12 @@
             android:name=".ui.activities.community.CommunityActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.activities.adddiscussion.AddDiscussionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.discussion.DiscussionActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.articledetail.ArticleDetailActivity"
             android:exported="false" />
         <activity
