@@ -1,4 +1,4 @@
-package com.ukmprogramming.recyco.ui.activities.articledetail
+package com.ukmprogramming.recyco.ui.activities.discussion
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -7,22 +7,22 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.ukmprogramming.recyco.R
-import com.ukmprogramming.recyco.databinding.ActivityArticleDetailBinding
+import com.ukmprogramming.recyco.databinding.ActivityDiscussionBinding
 
-class ArticleDetailActivity : AppCompatActivity() {
+class DiscussionActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityArticleDetailBinding
-    private val viewModel by viewModels<ArticleDetailViewModel>()
+    private lateinit var binding: ActivityDiscussionBinding
+    private val viewModel by viewModels<DiscussionViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityArticleDetailBinding.inflate(layoutInflater)
+        binding = ActivityDiscussionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // TODO: setSupportActionBar(binding.toolbar)
+        setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {
-            title = getString(R.string.add_discussion)
+            title = getString(R.string.discussion)
             setDisplayShowHomeEnabled(true)
             setDisplayHomeAsUpEnabled(true)
         }

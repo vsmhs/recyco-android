@@ -38,6 +38,13 @@ class ProductOrderHistoryListActivity : AppCompatActivity() {
         binding = ActivityProductOrderHistoryListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.apply {
+            title = getString(R.string.order_history)
+            setDisplayShowHomeEnabled(true)
+            setDisplayHomeAsUpEnabled(true)
+        }
+
         binding.apply {
             recyclerView.apply {
                 adapter = dataAdapter
@@ -64,5 +71,10 @@ class ProductOrderHistoryListActivity : AppCompatActivity() {
         }
 
         viewModel.getOrderHistory()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return super.onSupportNavigateUp()
     }
 }

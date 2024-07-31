@@ -44,4 +44,13 @@
     <string name="waste_treatment_location">Lokasi Depo Limbah</string>
     <string name="article">Artikel</string>
     <string name="discussion_forum">Forum Diskusi</string>
+    <string name="comment">Komentar</string>
+    <string name="add_comment">Tambah Komentar...</string>
+    <string name="add_discussion">Tambah Diskusi</string>
+    <string name="add_waste">Tambah Limbah</string>
+    <string name="delivery_status">Status Pesan Antar</string>
+    <string name="discussion">Diskusi</string>
+    <string name="edit_product">Ubah Status Produk</string>
+    <string name="my_waste_product">Limbah Saya di Pasar</string>
+    <string name="product_detail">Detail Produk</string>
 </resources>
