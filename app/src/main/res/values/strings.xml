@@ -35,4 +35,9 @@
     <string name="done_time">Waktu Selesai</string>
     <string name="price_template">Rp. %1$s</string>
     <string name="weight_template">%1$s kg</string>
+    <string name="process_order">Proses Pesanan</string>
+    <string name="finish_order">Selesaikan Pesanan</string>
+    <string name="welcome">Selamat Datang</string>
+    <string name="coin_total">2400 koin</string>
+    <string name="check_reward">Cek Hadiah</string>
 </resources>
