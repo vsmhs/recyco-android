@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.databinding.ActivityAddProductBinding
+import com.ukmprogramming.recyco.ui.fragments.market.MarketFragment
 import com.ukmprogramming.recyco.util.Helpers
 import com.ukmprogramming.recyco.util.ResultState
 import com.ukmprogramming.recyco.util.handleHttpException
@@ -91,6 +92,7 @@ class AddProductActivity : AppCompatActivity() {
                 progressBar.isVisible = resultState is ResultState.Loading
 
                 if (resultState is ResultState.Success) {
+                    setResult(MarketFragment.RESULT_CODE_ADD_PRODUCT)
                     finish()
                 } else if (resultState is ResultState.Error) {
                     resultState.exception.getData()?.handleHttpException()?.let { message ->

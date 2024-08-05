@@ -7,11 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.model.GlideUrl
+import com.ukmprogramming.recyco.BuildConfig
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.data.network.response.models.MarketItem
 import com.ukmprogramming.recyco.databinding.ActivityRequestDeliveryBinding
 import com.ukmprogramming.recyco.ui.activities.productdetail.ProductDetailActivity
-import com.ukmprogramming.recyco.util.Constants
 import com.ukmprogramming.recyco.util.ResultState
 import com.ukmprogramming.recyco.util.handleHttpException
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,7 +44,7 @@ class RequestDeliveryActivity : AppCompatActivity() {
         binding.apply {
             Glide.with(this@RequestDeliveryActivity)
                 .load(
-                    GlideUrl("${Constants.BASE_URL}${marketItem.thumbnailUrl}") {
+                    GlideUrl("${BuildConfig.BASE_URL}${marketItem.thumbnailUrl}") {
                         mapOf(Pair("ngrok-skip-browser-warning", "ngrok-skip-browser-warning"))
                     }
                 )

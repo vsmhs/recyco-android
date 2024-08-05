@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.model.GlideUrl
+import com.ukmprogramming.recyco.BuildConfig
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.data.network.response.models.MarketItem
 import com.ukmprogramming.recyco.databinding.ItemOwnedProductBinding
-import com.ukmprogramming.recyco.util.Constants
 
 class OwnedProductItemAdapter(
     private val onItemCLick: (MarketItem) -> Unit
@@ -41,7 +41,7 @@ class OwnedProductItemAdapter(
             tvWeight.text = context.getString(R.string.weight_template, data.weight.toString())
             tvPrice.text = context.getString(R.string.price_template, data.price.toString())
             Glide.with(context)
-                .load(GlideUrl("${Constants.BASE_URL}${data.thumbnailUrl}") {
+                .load(GlideUrl("${BuildConfig.BASE_URL}${data.thumbnailUrl}") {
                     mapOf(Pair("ngrok-skip-browser-warning", "ngrok-skip-browser-warning"))
                 })
                 .timeout(30000)

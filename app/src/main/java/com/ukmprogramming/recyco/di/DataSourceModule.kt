@@ -1,9 +1,9 @@
 package com.ukmprogramming.recyco.di
 
 import android.content.Context
+import com.ukmprogramming.recyco.BuildConfig
 import com.ukmprogramming.recyco.data.network.service.APIService
 import com.ukmprogramming.recyco.data.preferences.AppPreferences
-import com.ukmprogramming.recyco.util.Constants
 import com.ukmprogramming.recyco.util.dataStore
 import dagger.Module
 import dagger.Provides
@@ -43,7 +43,7 @@ class DataSourceModule {
             })
             .build()
         val retrofit = Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()

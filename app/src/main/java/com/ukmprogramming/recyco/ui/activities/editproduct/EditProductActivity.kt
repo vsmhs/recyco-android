@@ -7,10 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.model.GlideUrl
+import com.ukmprogramming.recyco.BuildConfig
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.data.network.response.models.MarketItem
 import com.ukmprogramming.recyco.databinding.ActivityEditProductBinding
-import com.ukmprogramming.recyco.util.Constants
 import com.ukmprogramming.recyco.util.MarketTransactionStatuses
 import com.ukmprogramming.recyco.util.ResultState
 import com.ukmprogramming.recyco.util.UserRoles
@@ -42,7 +42,7 @@ class EditProductActivity : AppCompatActivity() {
 
         binding.apply {
             Glide.with(this@EditProductActivity)
-                .load(GlideUrl("${Constants.BASE_URL}${marketItem.thumbnailUrl}") {
+                .load(GlideUrl("${BuildConfig.BASE_URL}${marketItem.thumbnailUrl}") {
                     mapOf(Pair("ngrok-skip-browser-warning", "ngrok-skip-browser-warning"))
                 })
                 .timeout(30000)

@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -11,6 +13,9 @@ android {
     namespace = "com.ukmprogramming.recyco"
     compileSdk = 34
 
+    val localProperties = Properties()
+    localProperties.load(rootProject.file("local.properties").reader())
+
     defaultConfig {
         applicationId = "com.ukmprogramming.recyco"
         minSdk = 24
@@ -19,6 +24,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_URL", localProperties["BASE_URL"]?.toString() ?: "")
+        manifestPlaceholders["GOOGLE_GEO_API_KEY"] =
+            localProperties["GOOGLE_GEO_API_KEY"]?.toString() ?: ""
     }
 
     buildFeatures {

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -29,6 +30,14 @@ class MarketFragment : Fragment() {
 
     private val viewModel by viewModels<MarketViewModel>()
 
+    private val launcherAddProductActivity = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        if (it.resultCode == RESULT_CODE_ADD_PRODUCT) {
+            viewModel.getMarketItems()
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,9 +52,14 @@ class MarketFragment : Fragment() {
         val activity = requireActivity()
 
         val dataAdapter = MarketItemAdapter {
-            startActivity(Intent(activity, ProductDetailActivity::class.java).apply {
-                putExtra(ProductDetailActivity.EXTRA_MARKET_ITEM_KEY, it)
-            })
+            launcherAddProductActivity.launch(
+                Intent(
+                    activity,
+                    ProductDetailActivity::class.java
+                ).apply {
+                    putExtra(ProductDetailActivity.EXTRA_MARKET_ITEM_KEY, it)
+                }
+            )
         }
 
         binding.apply {
@@ -107,5 +121,9 @@ class MarketFragment : Fragment() {
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()
+    }
+
+    companion object {
+        const val RESULT_CODE_ADD_PRODUCT = 1234578
     }
 }

@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.model.GlideUrl
+import com.ukmprogramming.recyco.BuildConfig
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.databinding.ActivityDeliveryStatusBinding
-import com.ukmprogramming.recyco.util.Constants
 import com.ukmprogramming.recyco.util.Helpers
 import com.ukmprogramming.recyco.util.MarketTransactionStatuses
 import com.ukmprogramming.recyco.util.ResultState
@@ -62,7 +62,7 @@ class DeliveryStatusActivity : AppCompatActivity() {
 
                     Glide.with(this@DeliveryStatusActivity)
                         .load(
-                            GlideUrl("${Constants.BASE_URL}${resultState.data.item.thumbnailUrl}") {
+                            GlideUrl("${BuildConfig.BASE_URL}${resultState.data.item.thumbnailUrl}") {
                                 mapOf(
                                     Pair(
                                         "ngrok-skip-browser-warning",

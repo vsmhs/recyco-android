@@ -4,10 +4,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.model.GlideUrl
+import com.ukmprogramming.recyco.BuildConfig
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.data.network.response.models.Article
 import com.ukmprogramming.recyco.databinding.ActivityArticleDetailBinding
-import com.ukmprogramming.recyco.util.Constants
 import com.ukmprogramming.recyco.util.Helpers
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -38,7 +38,7 @@ class ArticleDetailActivity : AppCompatActivity() {
             tvDate.text = Helpers.formatDateNoTime(article.createdAt)
 
             Glide.with(this@ArticleDetailActivity)
-                .load(GlideUrl("${Constants.BASE_URL}${article.thumbnailUrl}") {
+                .load(GlideUrl("${BuildConfig.BASE_URL}${article.thumbnailUrl}") {
                     mapOf(Pair("ngrok-skip-browser-warning", "ngrok-skip-browser-warning"))
                 })
                 .timeout(30000)

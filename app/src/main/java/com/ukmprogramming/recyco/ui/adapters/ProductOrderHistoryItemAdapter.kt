@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.model.GlideUrl
+import com.ukmprogramming.recyco.BuildConfig
 import com.ukmprogramming.recyco.R
 import com.ukmprogramming.recyco.data.network.response.models.MarketTransactionsItem
 import com.ukmprogramming.recyco.databinding.ItemProductOrderHistoryBinding
-import com.ukmprogramming.recyco.util.Constants
 import com.ukmprogramming.recyco.util.Helpers
 import com.ukmprogramming.recyco.util.MarketTransactionStatuses
 
@@ -46,7 +46,7 @@ class ProductOrderHistoryItemAdapter(
 
         binding.apply {
             Glide.with(context)
-                .load(GlideUrl("${Constants.BASE_URL}${data.item.thumbnailUrl}") {
+                .load(GlideUrl("${BuildConfig.BASE_URL}${data.item.thumbnailUrl}") {
                     mapOf(Pair("ngrok-skip-browser-warning", "ngrok-skip-browser-warning"))
                 })
                 .timeout(30000)
@@ -55,11 +55,7 @@ class ProductOrderHistoryItemAdapter(
                 .into(ivThumbnail)
             tvName.text = data.item.name
             tvWeight.text = context.getString(R.string.weight_template, data.item.weight.toString())
-            tvDate.text = if (data.item.postedAt != null) {
-                Helpers.formatDate(data.item.postedAt)
-            } else {
-                "-"
-            }
+            tvDate.text = Helpers.formatDate(data.item.postedAt)
             tvStatus.text = when (data.lastStatus.status) {
                 MarketTransactionStatuses.ON_PROCESS.name -> "On Process"
                 MarketTransactionStatuses.ON_DELIVER.name -> "On Deliver"
