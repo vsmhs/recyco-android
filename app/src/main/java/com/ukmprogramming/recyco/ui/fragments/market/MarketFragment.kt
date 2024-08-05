@@ -80,7 +80,7 @@ class MarketFragment : Fragment() {
                 if (resultState is ResultState.Success) {
                     dataAdapter.submitList(resultState.data)
                 } else if (resultState is ResultState.Error) {
-                    resultState.exception.getData()?.handleHttpException(activity)?.let { message ->
+                    resultState.exception.getData()?.handleHttpException()?.let { message ->
                         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -93,7 +93,7 @@ class MarketFragment : Fragment() {
                     btnOwnedProduct.isVisible = resultState.data.role == UserRoles.P_SMALL.name ||
                             resultState.data.role == UserRoles.P_LARGE.name
                 } else if (resultState is ResultState.Error) {
-                    resultState.exception.getData()?.handleHttpException(activity)?.let { message ->
+                    resultState.exception.getData()?.handleHttpException()?.let { message ->
                         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
                     }
                 }

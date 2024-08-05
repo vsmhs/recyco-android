@@ -38,10 +38,9 @@
                 android:id="@+id/bottomNavigationView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                app:menu="@menu/bottom_main_menu"
                 android:layout_marginEnd="16dp"
-                />
+                android:background="@android:color/transparent"
+                app:menu="@menu/bottom_main_menu" />
 
         </com.google.android.material.bottomappbar.BottomAppBar>
 

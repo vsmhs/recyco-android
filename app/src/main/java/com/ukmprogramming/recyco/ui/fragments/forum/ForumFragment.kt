@@ -70,7 +70,7 @@ class ForumFragment : Fragment() {
                 if (resultState is ResultState.Success) {
                     forumItemAdapter.submitList(resultState.data)
                 } else if (resultState is ResultState.Error) {
-                    resultState.exception.getData()?.handleHttpException(activity)?.let { message ->
+                    resultState.exception.getData()?.handleHttpException()?.let { message ->
                         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
                     }
                 }

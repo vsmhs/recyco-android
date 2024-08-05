@@ -89,15 +89,13 @@ class RequestDeliveryActivity : AppCompatActivity() {
                     ).show()
                     finish()
                 } else if (resultState is ResultState.Error) {
-                    resultState.exception.getData()
-                        ?.handleHttpException(this@RequestDeliveryActivity)
-                        ?.let { message ->
-                            Toast.makeText(
-                                this@RequestDeliveryActivity,
-                                message,
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
+                    resultState.exception.getData()?.handleHttpException()?.let { message ->
+                        Toast.makeText(
+                            this@RequestDeliveryActivity,
+                            message,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
             }
         }

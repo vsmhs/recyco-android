@@ -51,15 +51,13 @@ class ProductOrderHistoryListActivity : AppCompatActivity() {
                 if (resultState is ResultState.Success) {
                     dataAdapter.submitList(resultState.data)
                 } else if (resultState is ResultState.Error) {
-                    resultState.exception.getData()
-                        ?.handleHttpException(this@ProductOrderHistoryListActivity)
-                        ?.let { message ->
-                            Toast.makeText(
-                                this@ProductOrderHistoryListActivity,
-                                message,
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
+                    resultState.exception.getData()?.handleHttpException()?.let { message ->
+                        Toast.makeText(
+                            this@ProductOrderHistoryListActivity,
+                            message,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
             }
         }

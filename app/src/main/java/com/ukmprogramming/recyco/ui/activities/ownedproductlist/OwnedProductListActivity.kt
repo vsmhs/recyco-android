@@ -51,14 +51,13 @@ class OwnedProductListActivity : AppCompatActivity() {
                 if (resultState is ResultState.Success) {
                     dataAdapter.submitList(resultState.data)
                 } else if (resultState is ResultState.Error) {
-                    resultState.exception.getData()
-                        ?.handleHttpException(this@OwnedProductListActivity)?.let { message ->
-                            Toast.makeText(
-                                this@OwnedProductListActivity,
-                                message,
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
+                    resultState.exception.getData()?.handleHttpException()?.let { message ->
+                        Toast.makeText(
+                            this@OwnedProductListActivity,
+                            message,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
             }
         }

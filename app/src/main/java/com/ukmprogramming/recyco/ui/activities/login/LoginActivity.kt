@@ -47,10 +47,9 @@ class LoginActivity : AppCompatActivity() {
                     )
                     finish()
                 } else if (resultState is ResultState.Error) {
-                    resultState.exception.getData()?.handleHttpException(this@LoginActivity)
-                        ?.let { message ->
-                            Toast.makeText(this@LoginActivity, message, Toast.LENGTH_SHORT).show()
-                        }
+                    resultState.exception.getData()?.handleHttpException()?.let { message ->
+                        Toast.makeText(this@LoginActivity, message, Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }

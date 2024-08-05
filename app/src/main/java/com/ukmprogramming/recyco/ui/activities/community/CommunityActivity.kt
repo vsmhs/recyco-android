@@ -44,11 +44,10 @@ class CommunityActivity : AppCompatActivity() {
                 if (resultState is ResultState.Success) {
                     communityItemAdapter.submitList(resultState.data)
                 } else if (resultState is ResultState.Error) {
-                    resultState.exception.getData()?.handleHttpException(this@CommunityActivity)
-                        ?.let { message ->
-                            Toast.makeText(this@CommunityActivity, message, Toast.LENGTH_SHORT)
-                                .show()
-                        }
+                    resultState.exception.getData()?.handleHttpException()?.let { message ->
+                        Toast.makeText(this@CommunityActivity, message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
             }
         }

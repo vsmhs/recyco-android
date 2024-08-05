@@ -72,7 +72,7 @@ class ProfileFragment : Fragment() {
                     )
                     activity.finish()
                 } else if (resultState is ResultState.Error) {
-                    resultState.exception.getData()?.handleHttpException(activity)
+                    resultState.exception.getData()?.handleHttpException()
                         ?.let { message ->
                             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
                         }
