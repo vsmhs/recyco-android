@@ -52,9 +52,9 @@
             android:layout_marginHorizontal="8dp"
             android:ellipsize="end"
             android:maxLines="1"
-            app:layout_constraintTop_toTopOf="@+id/iv_thumbnail"
             app:layout_constraintBottom_toBottomOf="@+id/iv_thumbnail"
             app:layout_constraintStart_toEndOf="@+id/iv_thumbnail"
+            app:layout_constraintTop_toTopOf="@+id/iv_thumbnail"
             tools:text="Nama Produk" />
 
 
@@ -65,8 +65,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintStart_toEndOf="@+id/iv_thumbnail"
             app:layout_constraintBottom_toBottomOf="@+id/iv_thumbnail"
+            app:layout_constraintStart_toEndOf="@+id/iv_thumbnail"
             tools:text="0 kg" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

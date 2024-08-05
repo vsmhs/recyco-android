@@ -48,11 +48,10 @@ class AddDiscussionActivity : AppCompatActivity() {
                     ).show()
                     finish()
                 } else if (resultState is ResultState.Error) {
-                    resultState.exception.getData()?.handleHttpException(this@AddDiscussionActivity)
-                        ?.let { message ->
-                            Toast.makeText(this@AddDiscussionActivity, message, Toast.LENGTH_SHORT)
-                                .show()
-                        }
+                    resultState.exception.getData()?.handleHttpException()?.let { message ->
+                        Toast.makeText(this@AddDiscussionActivity, message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
             }
         }

@@ -56,11 +56,10 @@ class ArticleListActivity : AppCompatActivity() {
                 if (resultState is ResultState.Success) {
                     articleItemAdapter.submitList(resultState.data)
                 } else if (resultState is ResultState.Error) {
-                    resultState.exception.getData()?.handleHttpException(this@ArticleListActivity)
-                        ?.let { message ->
-                            Toast.makeText(this@ArticleListActivity, message, Toast.LENGTH_SHORT)
-                                .show()
-                        }
+                    resultState.exception.getData()?.handleHttpException()?.let { message ->
+                        Toast.makeText(this@ArticleListActivity, message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
             }
         }

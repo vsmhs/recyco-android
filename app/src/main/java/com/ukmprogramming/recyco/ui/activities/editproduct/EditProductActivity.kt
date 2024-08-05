@@ -88,11 +88,10 @@ class EditProductActivity : AppCompatActivity() {
                         Toast.makeText(this@EditProductActivity, it, Toast.LENGTH_SHORT).show()
                     }
                 } else if (resultState is ResultState.Error) {
-                    resultState.exception.getData()?.handleHttpException(this@EditProductActivity)
-                        ?.let { message ->
-                            Toast.makeText(this@EditProductActivity, message, Toast.LENGTH_SHORT)
-                                .show()
-                        }
+                    resultState.exception.getData()?.handleHttpException()?.let { message ->
+                        Toast.makeText(this@EditProductActivity, message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
             }
 
@@ -104,11 +103,10 @@ class EditProductActivity : AppCompatActivity() {
                         Toast.makeText(this@EditProductActivity, it, Toast.LENGTH_SHORT).show()
                     }
                 } else if (resultState is ResultState.Error) {
-                    resultState.exception.getData()?.handleHttpException(this@EditProductActivity)
-                        ?.let { message ->
-                            Toast.makeText(this@EditProductActivity, message, Toast.LENGTH_SHORT)
-                                .show()
-                        }
+                    resultState.exception.getData()?.handleHttpException()?.let { message ->
+                        Toast.makeText(this@EditProductActivity, message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
             }
         }

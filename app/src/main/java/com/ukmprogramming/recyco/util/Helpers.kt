@@ -49,20 +49,14 @@ object Helpers {
     }
 
     fun formatDate(date: String): String {
-        return SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(
-            SimpleDateFormat(
-                "yyyy-MM-dd'T'HH:mm:ssZ",
-                Locale.ENGLISH
-            ).parse(date)
-        )
+        return SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.ROOT).parse(date)?.let {
+            SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ROOT).format(it)
+        } ?: "-"
     }
 
     fun formatDateNoTime(date: String): String {
-        return SimpleDateFormat("yyyy-MM-dd").format(
-            SimpleDateFormat(
-                "yyyy-MM-dd'T'HH:mm:ssZ",
-                Locale.ENGLISH
-            ).parse(date)
-        )
+        return SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.ROOT).parse(date)?.let {
+            SimpleDateFormat("yyyy-MM-dd", Locale.ROOT).format(it)
+        } ?: "-"
     }
 }

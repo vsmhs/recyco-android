@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="Beranda"
+    <item
         android:id="@+id/home"
-        android:icon="@drawable/ic_home" />
-    <item android:title="Pasar"
+        android:icon="@drawable/ic_home"
+        android:title="Beranda" />
+    <item
         android:id="@+id/market"
-        android:icon="@drawable/ic_store" />
-    <item android:title="Forum"
+        android:icon="@drawable/ic_store"
+        android:title="Pasar" />
+    <item
         android:id="@+id/forum"
-        android:icon="@drawable/ic_forum" />
-    <item android:title="Profil"
+        android:icon="@drawable/ic_forum"
+        android:title="Forum" />
+    <item
         android:id="@+id/profile"
-        android:icon="@drawable/ic_user" />
+        android:icon="@drawable/ic_user"
+        android:title="Profil" />
 
 </menu>

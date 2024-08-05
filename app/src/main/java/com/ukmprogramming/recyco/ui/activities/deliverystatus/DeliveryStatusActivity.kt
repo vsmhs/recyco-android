@@ -83,12 +83,10 @@ class DeliveryStatusActivity : AppCompatActivity() {
                     tvComplete.text =
                         finishedStatus?.createdAt?.let { Helpers.formatDate(it) } ?: "-"
                 } else if (resultState is ResultState.Error) {
-                    resultState.exception.getData()
-                        ?.handleHttpException(this@DeliveryStatusActivity)
-                        ?.let { message ->
-                            Toast.makeText(this@DeliveryStatusActivity, message, Toast.LENGTH_SHORT)
-                                .show()
-                        }
+                    resultState.exception.getData()?.handleHttpException()?.let { message ->
+                        Toast.makeText(this@DeliveryStatusActivity, message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
             }
         }

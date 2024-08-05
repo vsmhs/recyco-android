@@ -93,11 +93,10 @@ class AddProductActivity : AppCompatActivity() {
                 if (resultState is ResultState.Success) {
                     finish()
                 } else if (resultState is ResultState.Error) {
-                    resultState.exception.getData()?.handleHttpException(this@AddProductActivity)
-                        ?.let { message ->
-                            Toast.makeText(this@AddProductActivity, message, Toast.LENGTH_SHORT)
-                                .show()
-                        }
+                    resultState.exception.getData()?.handleHttpException()?.let { message ->
+                        Toast.makeText(this@AddProductActivity, message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
             }
         }

@@ -79,19 +79,14 @@ class LocationActivity : AppCompatActivity(), OnMapReadyCallback {
                         )
                     )
                 } else if (resultState is ResultState.Error) {
-                    resultState.exception.getData()?.handleHttpException(this@LocationActivity)
-                        ?.let { message ->
-                            Toast.makeText(this@LocationActivity, message, Toast.LENGTH_SHORT)
-                                .show()
-                        }
+                    resultState.exception.getData()?.handleHttpException()?.let { message ->
+                        Toast.makeText(this@LocationActivity, message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
             }
         }
 
         viewModel.getForumPosts()
-
-//        val sydney = LatLng(-34.0, 151.0)
-//        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
 }

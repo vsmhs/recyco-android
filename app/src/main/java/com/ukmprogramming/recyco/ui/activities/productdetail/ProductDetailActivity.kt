@@ -51,11 +51,10 @@ class ProductDetailActivity : AppCompatActivity() {
                     btnRequestDelivery.isVisible = resultState.data.role == UserRoles.C_LARGE.name
                     tvUserName.text = resultState.data.name
                 } else if (resultState is ResultState.Error) {
-                    resultState.exception.getData()?.handleHttpException(this@ProductDetailActivity)
-                        ?.let { message ->
-                            Toast.makeText(this@ProductDetailActivity, message, Toast.LENGTH_SHORT)
-                                .show()
-                        }
+                    resultState.exception.getData()?.handleHttpException()?.let { message ->
+                        Toast.makeText(this@ProductDetailActivity, message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
             }
 

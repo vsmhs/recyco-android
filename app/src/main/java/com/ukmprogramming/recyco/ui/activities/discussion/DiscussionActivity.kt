@@ -53,11 +53,10 @@ class DiscussionActivity : AppCompatActivity() {
 
                     commentItemAdapter.submitList(resultState.data.replies)
                 } else if (resultState is ResultState.Error) {
-                    resultState.exception.getData()?.handleHttpException(this@DiscussionActivity)
-                        ?.let { message ->
-                            Toast.makeText(this@DiscussionActivity, message, Toast.LENGTH_SHORT)
-                                .show()
-                        }
+                    resultState.exception.getData()?.handleHttpException()?.let { message ->
+                        Toast.makeText(this@DiscussionActivity, message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
             }
 
@@ -69,11 +68,10 @@ class DiscussionActivity : AppCompatActivity() {
                         .show()
                     viewModel.getForumPostWithReply(forumPostId)
                 } else if (resultState is ResultState.Error) {
-                    resultState.exception.getData()?.handleHttpException(this@DiscussionActivity)
-                        ?.let { message ->
-                            Toast.makeText(this@DiscussionActivity, message, Toast.LENGTH_SHORT)
-                                .show()
-                        }
+                    resultState.exception.getData()?.handleHttpException()?.let { message ->
+                        Toast.makeText(this@DiscussionActivity, message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
             }
 
